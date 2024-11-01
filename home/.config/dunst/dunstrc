@@ -221,8 +221,8 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 5
-    icon_corner_radius = 2
+    corner_radius = 12
+    icon_corner_radius = 3
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
