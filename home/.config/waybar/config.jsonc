@@ -79,6 +79,7 @@
         "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
         "format-disconnected": "󰤮",
         "tooltip-format": "{ifname}: {ipaddr}",
+        "on-click": "kitty -e nmtui",
         "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
     },
 
