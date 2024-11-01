@@ -6,11 +6,11 @@ configuration {
 }
 
 * {
-    screen-margin:               4px 4px;
-    box-spacing:                 5px;
+    screen-margin:               15px 15px;
+    box-spacing:                 15px;
     icon-size:                   96px;
-    element-padding:             30px;
-    element-spacing:             5px;
+    element-padding:             25px;
+    element-spacing:             15px;
     font:                        "Cantarell 12";
 
     background: #242424FF;
@@ -63,7 +63,7 @@ inputbar {
     margin:                      0px 50% 0px 0px;
     padding:                     15px;
     border:                      0px solid;
-    border-radius:               5px;
+    border-radius:               12px;
     border-color:                transparent;
     background-color:            @background-alt;
     text-color:                  @foreground;
@@ -116,7 +116,7 @@ element {
     margin:                      0px;
     padding:                     @element-padding;
     border:                      0px solid;
-    border-radius:               5px;
+    border-radius:               12px;
     border-color:                @selected;
     background-color:            transparent;
     text-color:                  @foreground;
