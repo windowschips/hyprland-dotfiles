@@ -20,7 +20,6 @@
 
     "modules-left": [
         "clock#time",
-        "clock#date"
     ],
     "modules-center": [
         "hyprland/workspaces"
@@ -59,22 +58,18 @@
 
     "clock#time": {
         "interval": 1,
-        "format": "{:%H:%M}",
-        "tooltip": false
-    },
-
-    "clock#date": {
-      "interval": 10,
-      "format": "{:%e %b %Y}", // Icon: calendar-alt
-      "tooltip-format": "{:%e %B %Y}"
+        "format": "{:%I\n%M}",
+        "tooltip": true,
+        "tooltip-format": "{:%r\n%d %B %Y}"
     },
 
     "network": {
         "interval": 5,
-        "format-wifi": " ", // Icon: wifi
+        "format-wifi": "{icon}", // Icon: wifi
         "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
-        "format-disconnected": "⚠ ",
-        "tooltip-format": "{ifname}: {ipaddr}"
+        "format-disconnected": "󰤮",
+        "tooltip-format": "{ifname}: {ipaddr}",
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
     },
 
     "hyprland/workspaces": {
@@ -85,9 +80,9 @@
 
     "pulseaudio": {
        //"scroll-step": 1,
-       "format": "{icon}  {volume}%",
-       "format-bluetooth": "{icon}  {volume}%",
-       "format-muted": "",
+       "format": "{icon}",
+       "format-bluetooth": "{icon}",
+       "format-muted": "󰝟",
        "format-icons": {
            "headphones": "",
            "handsfree": "",
@@ -95,9 +90,11 @@
            "phone": "",
            "portable": "",
            "car": "",
-           "default": ["", ""]
+           "default": ["󰕿", "󰖀", "󰕾"]
        },
-       "on-click": "pavucontrol"
+       "tooltip-format": "{volume}%",
+       "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+       "on-click-right": "pavucontrol"
     },
 
     "tray": {

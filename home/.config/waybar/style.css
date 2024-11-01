@@ -32,6 +32,16 @@
     }
 }
 
+@keyframes nm-blink-critical {
+    50% {
+      color: white;
+    }
+
+    to {
+        color: #e5a50a;
+    }
+}
+
 
 /* -----------------------------------------------------------------------------
  * Base styles
@@ -43,7 +53,7 @@
     border-radius: 0;
     min-height: 0;
     margin: 0;
-    padding: 0;
+    padding: 2;
 }
 
 /* The whole bar */
@@ -51,7 +61,7 @@
     background: #323232;
     color: white;
     font-family: Cantarell, Noto Sans, sans-serif;
-    font-size: 13px;
+    font-size: 18px;
 }
 
 /* Each module */
@@ -65,8 +75,8 @@
 #pulseaudio,
 #temperature,
 #tray {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 
@@ -100,6 +110,7 @@
 
 #clock {
     font-weight: bold;
+    font-size: 13px;
 }
 
 #network {
@@ -107,7 +118,11 @@
 }
 
 #network.disconnected {
-    color: orange;
+    animation-name: nm-blink-critical;
+    animation-iteration-count: infinite;
+    animation-duration: 0.5s;
+    animation-direction: alternate-reverse;
+    animation-timing-function: steps(4);
 }
 
 #pulseaudio {
@@ -118,42 +133,22 @@
     /* No styles */
 }
 
-#custom-spotify {
-    color: rgb(102, 220, 105);
-}
-
-#temperature {
-    /* No styles */
-}
-
-#temperature.critical {
-    color: red;
-}
-
 #tray {
     /* No styles */
 }
 
-#window {
-    font-weight: bold;
-}
-
 #workspaces button {
-    border-top: 2px solid transparent;
-    /* To compensate for the top border and still have vertical centering */
-    padding-bottom: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
     color: #888888;
+    background-color: #303030;
+    font-size: 13px;
 }
 
-#workspaces button.focused {
-    border-color: #4c7899;
+#workspaces button.active {
     color: white;
-    background-color: #285577;
 }
 
 #workspaces button.urgent {
-    border-color: #c9545d;
     color: #c9545d;
 }
