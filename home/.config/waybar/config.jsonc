@@ -16,19 +16,21 @@
     "position": "left",
 
     // If height property would be not present, it'd be calculated dynamically
-    "width": 20,
+    "width": 42,
 
     "modules-left": [
-        "clock#time",
+        "clock#time"
     ],
     "modules-center": [
         "hyprland/workspaces"
     ],
     "modules-right": [
+        "tray",
+        "custom/backlight",
         "pulseaudio",
+        "bluetooth",
         "network",
-        "battery",
-        "tray"
+        "battery"
     ],
 
 
@@ -56,6 +58,14 @@
         "tooltip": true
     },
 
+    "custom/backlight": {
+        "interval": "once",
+        "format": "󰖨",
+        "on-scroll-up": "brightnessctl set 2%+",
+        "on-scroll-down": "brightnessctl set 2%- --min-value=2%",
+        "tooltip": false
+    },
+
     "clock#time": {
         "interval": 1,
         "format": "{:%I\n%M}",
@@ -79,22 +89,29 @@
     },
 
     "pulseaudio": {
-       //"scroll-step": 1,
+       "scroll-step": 2,
        "format": "{icon}",
        "format-bluetooth": "{icon}",
        "format-muted": "󰝟",
        "format-icons": {
-           "headphones": "",
-           "handsfree": "",
-           "headset": "",
-           "phone": "",
-           "portable": "",
-           "car": "",
            "default": ["󰕿", "󰖀", "󰕾"]
        },
        "tooltip-format": "{volume}%",
+       "max-volume": 200,
        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
        "on-click-right": "pavucontrol"
+    },
+
+    "bluetooth": {
+        // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+        "format": "󰂯",
+        "format-disabled": "󰂲", // an empty format will hide the module
+        "format-connected": "󰂯",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "blueman-manager"
     },
 
     "tray": {

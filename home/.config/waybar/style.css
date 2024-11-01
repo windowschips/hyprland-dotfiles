@@ -53,12 +53,12 @@
     border-radius: 0;
     min-height: 0;
     margin: 0;
-    padding: 2;
+    padding: 2px;
 }
 
 /* The whole bar */
 #waybar {
-    background: #323232;
+    background: #242424;
     color: white;
     font-family: Cantarell, Noto Sans, sans-serif;
     font-size: 18px;
@@ -73,6 +73,8 @@
 #mode,
 #network,
 #pulseaudio,
+#bluetooth,
+#backlight,
 #temperature,
 #tray {
     padding-top: 2px;
@@ -83,6 +85,22 @@
 /* -----------------------------------------------------------------------------
  * Module styles
  * -------------------------------------------------------------------------- */
+
+#bluetooth.disabled {
+    color: #888888;
+}
+
+#bluetooth.on {
+    color: white;
+}
+
+#bluetooth.off {
+    color: #888888;
+}
+
+#bluetooth.connected {
+    color: #3584e4;
+}
 
 #battery {
     animation-timing-function: linear;
@@ -113,10 +131,6 @@
     font-size: 13px;
 }
 
-#network {
-    /* No styles */
-}
-
 #network.disconnected {
     animation-name: nm-blink-critical;
     animation-iteration-count: infinite;
@@ -125,23 +139,11 @@
     animation-timing-function: steps(4);
 }
 
-#pulseaudio {
-    /* No styles */
-}
-
-#pulseaudio.muted {
-    /* No styles */
-}
-
-#tray {
-    /* No styles */
-}
-
 #workspaces button {
     padding-left: 7px;
     padding-right: 7px;
     color: #888888;
-    background-color: #303030;
+    background-color: #242424;
     font-size: 13px;
 }
 
