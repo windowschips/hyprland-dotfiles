@@ -99,7 +99,8 @@
        "tooltip-format": "{volume}%",
        "max-volume": 200,
        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-       "on-click-right": "pavucontrol"
+       "on-click-right": "pavucontrol",
+       "on-click-middle": "playerctl play-pause"
     },
 
     "bluetooth": {
