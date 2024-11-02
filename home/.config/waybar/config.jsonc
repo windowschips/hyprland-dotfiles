@@ -25,7 +25,7 @@
         "hyprland/workspaces"
     ],
     "modules-right": [
-        "group/traygrp",
+        "group/menu",
         "custom/backlight",
         "pulseaudio",
         "bluetooth",
@@ -66,24 +66,34 @@
         "tooltip": false
     },
 
-    "group/traygrp": {
+    "group/menu": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 250,
-            "children-class": "trayicons",
+            "children-class": "iconsmenu",
             "transition-left-to-right": false
         },
         "modules": [
-            "custom/traymain",
-            "tray"
+            "custom/menumain",
+            "tray",
+            "custom/hyprpicker"
         ]
     },
 
-    "custom/traymain": {
+    "custom/menumain": {
         "interval": "once",
         "format": "󰇘",
         "tooltip": true,
-        "tooltip-format": "Tray icons"
+        "tooltip-format": "More"
+    },
+
+
+    "custom/hyprpicker": {
+        "interval": "once",
+        "format": "󰈊",
+        "on-click": "dunstify \"Hyprpicker\" \"Color: $(hyprpicker -a)\nThis has been saved to your clipboard.\"",
+        "tooltip": true,
+        "tooltip-format": "Hyprpicker"
     },
 
     "tray": {
