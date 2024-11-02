@@ -19,8 +19,7 @@
     "width": 42,
 
     "modules-left": [
-        "clock#time",
-        "privacy"
+        "clock#time"
     ],
     "modules-center": [
         "hyprland/workspaces"
@@ -38,24 +37,6 @@
     // -------------------------------------------------------------------------
     // Modules
     // -------------------------------------------------------------------------
-
-    "privacy": {
-        "icon-spacing": 4,
-        "icon-size": 16,
-        "transition-duration": 250,
-        "modules": [
-            {
-                "type": "screenshare",
-                "tooltip": true,
-                "tooltip-icon-size": 21
-            },
-            {
-                "type": "audio-in",
-                "tooltip": true,
-                "tooltip-icon-size": 21
-            }
-        ]
-    },
 
     "battery": {
         "interval": 10,
