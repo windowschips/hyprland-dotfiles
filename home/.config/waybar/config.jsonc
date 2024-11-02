@@ -71,7 +71,7 @@
         "drawer": {
             "transition-duration": 250,
             "children-class": "trayicons",
-            "transition-left-to-right": false,
+            "transition-left-to-right": false
         },
         "modules": [
             "custom/traymain",
