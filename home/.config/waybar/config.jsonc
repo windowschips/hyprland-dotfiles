@@ -16,7 +16,7 @@
     "position": "left",
 
     // If height property would be not present, it'd be calculated dynamically
-    "width": 42,
+    "width": 38,
 
     "modules-left": [
         "clock#time"
@@ -25,7 +25,7 @@
         "hyprland/workspaces"
     ],
     "modules-right": [
-        "tray",
+        "group/traygrp",
         "custom/backlight",
         "pulseaudio",
         "bluetooth",
@@ -64,6 +64,31 @@
         "on-scroll-up": "brightnessctl set 2%+",
         "on-scroll-down": "brightnessctl set 2%- --min-value=2%",
         "tooltip": false
+    },
+
+    "group/traygrp": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 250,
+            "children-class": "trayicons",
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "custom/traymain",
+            "tray"
+        ]
+    },
+
+    "custom/traymain": {
+        "interval": "once",
+        "format": "󰇘",
+        "tooltip": true,
+        "tooltip-format": "Tray icons"
+    },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
     },
 
     "clock#time": {
@@ -114,11 +139,5 @@
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
         "on-click": "blueman-manager"
-    },
-
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
     }
-
 }

@@ -53,7 +53,7 @@
     border-radius: 0;
     min-height: 0;
     margin: 0;
-    padding: 2px;
+    padding: 1px;
 }
 
 /* The whole bar */
@@ -77,8 +77,8 @@
 #backlight,
 #temperature,
 #tray {
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 
 
@@ -128,7 +128,7 @@
 
 #clock {
     font-weight: bold;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 #network.disconnected {
@@ -140,15 +140,18 @@
 }
 
 #workspaces button {
+    padding: 5px;
     padding-left: 7px;
     padding-right: 7px;
     color: #888888;
     background-color: #303030;
-    font-size: 13px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 #workspaces button.active {
     color: white;
+    font-weight: bolder;
 }
 
 #workspaces button.urgent {
