@@ -42,6 +42,16 @@
     }
 }
 
+@keyframes ws-blink-critical {
+    50% {
+      color: #888888;
+    }
+
+    to {
+        color: #e5a50a;
+    }
+}
+
 
 /* -----------------------------------------------------------------------------
  * Base styles
@@ -144,6 +154,7 @@
     padding-left: 7px;
     padding-right: 7px;
     color: #888888;
+    border-radius: 100%;
     background-color: #303030;
     font-size: 12px;
     font-weight: bold;
@@ -155,5 +166,9 @@
 }
 
 #workspaces button.urgent {
-    color: #c9545d;
+    animation-name: ws-blink-critical;
+    animation-iteration-count: infinite;
+    animation-duration: 0.5s;
+    animation-direction: alternate-reverse;
+    animation-timing-function: steps(12);
 }
