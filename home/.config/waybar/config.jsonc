@@ -61,8 +61,8 @@
     "custom/backlight": {
         "interval": "once",
         "format": "󰖨",
-        "on-scroll-up": "brightnessctl set 2%+",
-        "on-scroll-down": "brightnessctl set 2%- --min-value=2%",
+        "on-scroll-up": "bash ~/.dotfiles/home/.config/dunstosd brightness_up",
+        "on-scroll-down": "bash ~/.dotfiles/home/.config/dunstosd brightness_down",
         "tooltip": false
     },
 
@@ -127,7 +127,7 @@
     },
 
     "pulseaudio": {
-       "scroll-step": 2,
+       "scroll-step": 5,
        "format": "{icon}",
        "format-bluetooth": "{icon}",
        "format-muted": "󰝟",
@@ -138,7 +138,9 @@
        "max-volume": 200,
        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
        "on-click-right": "pavucontrol",
-       "on-click-middle": "playerctl play-pause"
+       "on-click-middle": "playerctl play-pause",
+        "on-scroll-down": "bash ~/.dotfiles/home/.config/dunstosd volume_down",
+        "on-scroll-up": "bash ~/.dotfiles/home/.config/dunstosd volume_up"
     },
 
     "bluetooth": {
