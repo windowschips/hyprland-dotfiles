@@ -40,9 +40,9 @@ window {
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      0px solid;
+    border:                      3px solid;
     border-radius:               12px;
-    border-color:                @selected;
+    border-color:                #1a5fb4ff;
     cursor:                      "default";
     background-color:            @background;
 }
@@ -118,16 +118,17 @@ element {
     enabled:                     true;
     spacing:                     0px;
     margin:                      0px;
-    padding:                     20px 0px;
+    padding:                     26 0px;
     border:                      0px solid;
-    border-radius:               6px;
+    border-radius:               5px;
     border-color:                @selected;
-    background-color:            @background;
+    background-color:            #2E2E2EFF;
     text-color:                  @foreground;
     cursor:                      pointer;
+
 }
 element-text {
-    font:                        "feather bold 24";
+    font:                        "Cantarell 25";
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
@@ -135,6 +136,6 @@ element-text {
     horizontal-align:            0.5;
 }
 element selected.normal {
-    background-color:            var(background-alt);
+    background-color: #3F3F3FFF;
     text-color:                  var(foreground);
-}
+} 

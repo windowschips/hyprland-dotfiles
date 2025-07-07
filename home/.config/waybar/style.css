@@ -33,7 +33,7 @@
 }
 
 @keyframes nm-blink-critical {
-    50% {
+    20% {
       color: white;
     }
 
@@ -43,12 +43,14 @@
 }
 
 @keyframes ws-blink-critical {
-    50% {
+    20% {
       color: #888888;
+      text-shadow: 0 0;
     }
 
     to {
         color: #e5a50a;
+        text-shadow: 0 0 2px #e5a50a, 0 0 4px #e5a50a, 0 0 6px #e5a50a, 0 0 8px #e5a50a, 0 0 10px #e5a50a;
     }
 }
 
@@ -145,8 +147,8 @@
     animation-name: nm-blink-critical;
     animation-iteration-count: infinite;
     animation-duration: 0.5s;
-    animation-direction: alternate-reverse;
-    animation-timing-function: steps(4);
+    animation-direction: alternate;
+    animation-timing-function: steps(120);
 }
 
 #workspaces button {
@@ -155,7 +157,7 @@
     padding-right: 7px;
     color: #888888;
     border-radius: 100%;
-    background-color: #303030;
+    background-color: transparent;
     font-size: 12px;
     font-weight: bold;
 }
@@ -169,6 +171,7 @@
     animation-name: ws-blink-critical;
     animation-iteration-count: infinite;
     animation-duration: 0.5s;
-    animation-direction: alternate-reverse;
-    animation-timing-function: steps(12);
+    animation-direction: alternate;
+    font-weight: bolder;
+    animation-timing-function: steps(120);
 }
