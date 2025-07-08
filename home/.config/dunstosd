@@ -10,44 +10,40 @@ function get_volume {
     pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '[0-9]{1,3}(?=%)' | head -1
 }
 
-function get_mute {
-    pactl get-sink-mute @DEFAULT_SINK@ | grep -Po '(?<=Mute: )(yes|no)'
-}
-
 function get_brightness {
     brightnessctl -P g
 }
 
 function get_volume_icon {
     volume=$(get_volume)
-    mute=$(get_mute)
-    if [ "$volume" -eq 0 ] || [ "$mute" == "yes" ] ; then
-        volume_icon="󰝟"
-    elif [ "$volume" -lt 1 ]; then
-        volume_icon="󰕿"
-    elif [ "$volume" -lt 50 ]; then
-        volume_icon="󰖀"
+    mute=$(pactl get-sink-mute @DEFAULT_SINK@)
+    if [ "$mute" == "Mute: yes" ] ; then
+        volume_icon="󰝟 Muted"
+    elif [ "$volume" -lt 35 ]; then
+        volume_icon="󰕿 Volume"
+    elif [ "$volume" -lt 70 ]; then
+        volume_icon="󰖀 Volume"
     else
-        volume_icon="󰕾"
+        volume_icon="󰕾 Volume"
     fi
 }
 
 function get_brightness_icon {
-    brightness_icon="󰖨"
+    brightness_icon="󰖨 Brightness"
 }
 
 
 function show_volume_notif {
-    volume=$(get_mute)
+    volume=$(get_volume)
     get_volume_icon
-    notify-send -t $notification_timeout -h string:x-dunst-stack-tag:volume_notif -h int:value:$volume "$volume_icon $volume%"
+    notify-send -t $notification_timeout -h string:x-dunst-stack-tag:gosd -h int:value:$volume "$volume_icon"
 }
 
 function show_brightness_notif {
     brightness=$(get_brightness)
     echo $brightness
     get_brightness_icon
-    notify-send -t $notification_timeout -h string:x-dunst-stack-tag:brightness_notif -h int:value:$brightness "$brightness_icon $brightness%"
+    notify-send -t $notification_timeout -h string:x-dunst-stack-tag:gosd -h int:value:$brightness "$brightness_icon"
 }
 
 case $1 in

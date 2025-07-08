@@ -136,7 +136,7 @@
        },
        "tooltip-format": "{volume}%",
        "max-volume": 200,
-       "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+       "on-click": "bash ~/.dotfiles/home/.config/dunstosd volume_mute",
        "on-click-right": "pavucontrol",
        "on-click-middle": "playerctl play-pause",
         "on-scroll-down": "bash ~/.dotfiles/home/.config/dunstosd volume_down",
