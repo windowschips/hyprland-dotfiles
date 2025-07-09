@@ -35,8 +35,12 @@ function get_brightness_icon {
 
 function show_volume_notif {
     volume=$(get_volume)
+    m=""
+    if [ "$volume" -gt 100 ]; then
+        m=" High volume may cause permanent hearing damage!"
+    fi
     get_volume_icon
-    notify-send -t $notification_timeout -h string:x-dunst-stack-tag:gosd -h int:value:$volume "$volume_icon"
+    notify-send -t $notification_timeout -h string:x-dunst-stack-tag:gosd -h int:value:$volume "$volume_icon" "$m"
 }
 
 function show_brightness_notif {
