@@ -1,6 +1,5 @@
 #!/bin/bash
-
-# See README.md for usage instructions
+ 
 volume_step=1
 brightness_step=5
 max_volume=100
