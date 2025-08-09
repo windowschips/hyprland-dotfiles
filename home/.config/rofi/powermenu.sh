@@ -1,10 +1,5 @@
-#!/usr/bin/env bash      
+#!/usr/bin/env bash
 
-# CMDs
-uptime="`uptime -p | sed -e 's/up //g'`"
-host=`hostname`
-
-# Options
 shutdown='󰐥'
 reboot='󰜉'
 lock='󰌾'
@@ -13,73 +8,48 @@ logout='󰍃'
 yes='󰄬'
 no='󰅖'
 
-# Rofi CMD
-rofi_cmd() {
-	rofi -dmenu \
-		-p "Uptime: $uptime" \
-		-mesg "Uptime: $uptime" \
-		-theme ~/.dotfiles/home/.config/rofi/powermenu.rasi
-}
-
-# Confirmation CMD
-confirm_cmd() {
-	rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 350px;}' \
+confirm() {
+	echo -e "$yes\n$no" | rofi \
+		-theme-str 'window {location: center; anchor: center; fullscreen: false; width: 300px;}' \
 		-theme-str 'mainbox {children: [ "message", "listview" ];}' \
 		-theme-str 'listview {columns: 2; lines: 1;}' \
 		-theme-str 'element-text {horizontal-align: 0.5;}' \
 		-theme-str 'textbox {horizontal-align: 0.5;}' \
 		-dmenu \
 		-p 'Confirmation' \
-		-mesg 'Are you sure?' \
+		-mesg "Are you sure?" \
 		-theme ~/.dotfiles/home/.config/rofi/powermenu.rasi
 }
 
-# Ask for confirmation
-confirm_exit() {
-	echo -e "$yes\n$no" | confirm_cmd
+menu() {
+	killall rofi;
+	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi -dmenu -theme ~/.dotfiles/home/.config/rofi/powermenu.rasi
 }
 
-# Pass variables to rofi dmenu
-run_rofi() {
-	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
-}
+chosen="$(menu)"
+if [[ -z "$chosen" ]]; then
+	exit 0
+fi
 
-# Execute Command
-run_cmd() {
-	selected="$(confirm_exit)"
-	if [[ "$selected" == "$yes" ]]; then
-		if [[ $1 == '--shutdown' ]]; then
+selected="$(confirm)"
+if [[ "$selected" == "$yes" ]]; then
+	case ${chosen} in
+		$shutdown)
 			systemctl poweroff
-		elif [[ $1 == '--reboot' ]]; then
+			;;
+		$reboot)
 			systemctl reboot
-		elif [[ $1 == '--suspend' ]]; then
-			mpc -q pause
-			amixer set Master mute
-			systemctl suspend
-		elif [[ $1 == '--logout' ]]; then
+			;;
+		$lock)
+			hyprlock
+			;;
+		$suspend)
+			mpc -q pause;
+			amixer set Master mute;
+			systemctl suspend;
+			;;
+		$logout)
 			hyprctl dispatch exit
-		fi
-	else
-		exit 0
-	fi
-}
-
-# Actions
-chosen="$(run_rofi)"
-case ${chosen} in
-    $shutdown)
-		run_cmd --shutdown
-        ;;
-    $reboot)
-		run_cmd --reboot
-        ;;
-    $lock)
-		hyprlock
-        ;;
-    $suspend)
-		run_cmd --suspend
-        ;;
-    $logout)
-		run_cmd --logout
-        ;;
-esac
+			;;
+	esac
+fi 
