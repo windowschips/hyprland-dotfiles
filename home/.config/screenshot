@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+img="$(mktemp --suffix .png)"
+~/hyprland-dotfiles/home/.config/hypr/hyprshot -r -z -m region > "$img"
+
+wl-copy < "$img"
+
+if [ ! -s "$img" ]; then
+    dunstify "Screenshot" "No image received."
+    rm -f "$img"
+    exit 0
+fi
+
+action="$(dunstify "Screenshot" "Image copied to clipboard. Click to annotate." -I "$img" -t 3000 --action="annotate,Annotate")"
+
+if [ "$action" = "2" ]; then
+    satty -f - < "$img"
+fi
+
+rm -f "$img"

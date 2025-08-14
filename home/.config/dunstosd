@@ -12,18 +12,18 @@ function get_volume_icon {
     volume=$(get_volume)
     mute=$(pactl get-sink-mute @DEFAULT_SINK@)
     if [ "$mute" == "Mute: yes" ] ; then
-        volume_icon="󰝟 Muted"
+        volume_icon="󰝟  Muted"
     elif [ "$volume" -lt 35 ]; then
-        volume_icon="󰕿 Volume"
+        volume_icon="󰕿  Volume"
     elif [ "$volume" -lt 70 ]; then
-        volume_icon="󰖀 Volume"
+        volume_icon="󰖀  Volume"
     else
-        volume_icon="󰕾 Volume"
+        volume_icon="󰕾  Volume"
     fi
 }
 
 function get_brightness_icon {
-    brightness_icon="󰖨 Brightness"
+    brightness_icon="󰖨  Brightness"
 }
 
 function show_volume_notif {

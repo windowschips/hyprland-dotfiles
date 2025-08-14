@@ -7,151 +7,152 @@
 // =============================================================================
 
 {
-    // -------------------------------------------------------------------------
-    // Global configuration
-    // -------------------------------------------------------------------------
+	// -------------------------------------------------------------------------
+	// Global configuration
+	// -------------------------------------------------------------------------
 
-    "layer": "top",
+	"layer": "top",
 
-    "position": "left",
+	"position": "left",
 
-    // If height property would be not present, it'd be calculated dynamically
-    "width": 38,
+	// If height property would be not present, it'd be calculated dynamically
+	"width": 40,
 
-    "modules-left": [
-        "clock#time"
-    ],
-    "modules-center": [
-        "hyprland/workspaces"
-    ],
-    "modules-right": [
-        "group/menu",
-        "custom/backlight",
-        "pulseaudio",
-        "bluetooth",
-        "network",
-        "battery"
-    ],
-
-
-    // -------------------------------------------------------------------------
-    // Modules
-    // -------------------------------------------------------------------------
-
-    "battery": {
-        "interval": 10,
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        // Connected to AC
-        "format": "  {icon}  {capacity}%", // Icon: bolt
-        // Not connected to AC
-        "format-discharging": "{icon}  {capacity}%",
-        "format-icons": [
-            "", // Icon: battery-full
-            "", // Icon: battery-three-quarters
-            "", // Icon: battery-half
-            "", // Icon: battery-quarter
-            ""  // Icon: battery-empty
-        ],
-        "tooltip": true
-    },
-
-    "custom/backlight": {
-        "interval": "once",
-        "format": "󰖨",
-        "on-scroll-up": "bash ~/.dotfiles/home/.config/dunstosd brightness_up",
-        "on-scroll-down": "bash ~/.dotfiles/home/.config/dunstosd brightness_down",
-        "tooltip": false
-    },
-
-    "group/menu": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 250,
-            "children-class": "iconsmenu",
-            "transition-left-to-right": false
-        },
-        "modules": [
-            "custom/menumain",
-            "tray",
-            "custom/hyprpicker"
-        ]
-    },
-
-    "custom/menumain": {
-        "interval": "once",
-        "format": "󰇘",
-        "tooltip": true,
-        "tooltip-format": "More"
-    },
+	"modules-left": [
+		"clock#time"
+	],
+	"modules-center": [
+		"hyprland/workspaces"
+	],
+	"modules-right": [
+		"group/menu",
+		"custom/backlight",
+		"pulseaudio",
+		"bluetooth",
+		"network",
+		"battery"
+	],
 
 
-    "custom/hyprpicker": {
-        "interval": "once",
-        "format": "󰈊",
-        "on-click": "dunstify \"Hyprpicker\" \"Color: $(hyprpicker -a)\nThis has been saved to your clipboard.\"",
-        "tooltip": true,
-        "tooltip-format": "Hyprpicker"
-    },
+	// -------------------------------------------------------------------------
+	// Modules
+	// -------------------------------------------------------------------------
 
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
+	"battery": {
+		"interval": 10,
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		// Connected to AC
+		"format": "  {icon}  {capacity}%", // Icon: bolt
+		// Not connected to AC
+		"format-discharging": "{icon}  {capacity}%",
+		"format-icons": [
+			"", // Icon: battery-full
+			"", // Icon: battery-three-quarters
+			"", // Icon: battery-half
+			"", // Icon: battery-quarter
+			""  // Icon: battery-empty
+		],
+		"tooltip": true
+	},
 
-    "clock#time": {
-        "interval": 1,
-        "format": "{:%I\n%M}",
-        "tooltip": true,
-        "tooltip-format": "{:%r\n%d %B %Y}"
-    },
+	"custom/backlight": {
+		"interval": "once",
+		"format": "󰖨",
+		"on-scroll-up": "bash ~/.dotfiles/home/.config/dunstosd brightness_up",
+		"on-scroll-down": "bash ~/.dotfiles/home/.config/dunstosd brightness_down",
+		"tooltip": true,
+		"tooltip-format": "Brightness"
+	},
 
-    "network": {
-        "interval": 5,
-        "format-wifi": "{icon}", // Icon: wifi
-        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
-        "format-disconnected": "󰤮",
-        "tooltip-format": "{ifname}: {ipaddr}",
-        "on-click": "kitty -e nmtui",
-        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
-    },
+	"group/menu": {
+		"orientation": "inherit",
+		"drawer": {
+			"transition-duration": 100,
+			"children-class": "iconsmenu",
+			"transition-left-to-right": false,
+			"click-to-reveal": true
+		},
+		"modules": [
+			"custom/menumain",
+			"tray",
+			"custom/hyprpicker"
+		]
+	},
 
-    "hyprland/workspaces": {
-        "all-outputs": false,
-        "disable-scroll": false,
-        "format": "{name}",
-        "on-scroll-down": "hyprctl dispatch workspace e+1",
-        "on-scroll-up": "hyprctl dispatch workspace e-1"
-    },
+	"custom/menumain": {
+		"interval": "once",
+		"format": "󰇘",
+		"tooltip": true,
+		"tooltip-format": "Extras"
+	},
 
-    "pulseaudio": {
-       "scroll-step": 5,
-       "format": "{icon}",
-       "format-bluetooth": "{icon}",
-       "format-muted": "󰝟",
-       "format-icons": {
-           "default": ["󰕿", "󰖀", "󰕾"]
-       },
-       "tooltip-format": "{volume}%",
-       "max-volume": 200,
-       "on-click": "bash ~/.dotfiles/home/.config/dunstosd volume_mute",
-       "on-click-right": "pavucontrol",
-       "on-click-middle": "playerctl play-pause",
-        "on-scroll-down": "bash ~/.dotfiles/home/.config/dunstosd volume_down",
-        "on-scroll-up": "bash ~/.dotfiles/home/.config/dunstosd volume_up"
-    },
+	"custom/hyprpicker": {
+		"interval": "once",
+		"format": "󰈊",
+		"on-click": "color=$(hyprpicker -a 2>/dev/null) && [[ $color == \\#* ]] && dunstify \"Hyprpicker\" \"Color: $color\nThis has been saved to your clipboard.\"",
+		"tooltip": true,
+		"tooltip-format": "Hyprpicker"
+	},
 
-    "bluetooth": {
-        // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
-        "format": "󰂯",
-        "format-disabled": "󰂲", // an empty format will hide the module
-        "format-connected": "󰂯",
-        "tooltip-format": "{controller_alias}\t{controller_address}",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-        "on-click": "blueman-manager"
-    }
+	"tray": {
+		"icon-size": 21,
+		"spacing": 12
+	},
+
+	"clock#time": {
+		"interval": 1,
+		"format": "{:%I\n%M}",
+		"tooltip": true,
+		"tooltip-format": "{:%r\n%A, %d %B %Y}"
+	},
+
+	"network": {
+		"interval": 5,
+		"format-wifi": "{icon}", // Icon: wifi
+		"format-ethernet": "", // Icon: ethernet
+		"format-disconnected": "󰤮",
+		"tooltip-format": "{ifname}: {ipaddr}\nSSID: {essid}\nFrequency: {frequency}\nSignal: {signalStrength}% ({signaldBm})",
+		"on-click": "kitty -e nmtui",
+		"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+	},
+
+	"hyprland/workspaces": {
+		"all-outputs": false,
+		"disable-scroll": false,
+		"persistent-workspaces": false,
+		"format": "{name}",
+		"on-scroll-down": "hyprctl dispatch workspace e+1",
+		"on-scroll-up": "hyprctl dispatch workspace e-1"
+	},
+
+	"pulseaudio": {
+		"scroll-step": 5,
+		"format": "{icon}",
+		"format-bluetooth": "{icon}",
+		"format-muted": "󰝟",
+		"format-icons": {
+			"default": ["󰕿", "󰖀", "󰕾"]
+		},
+		"tooltip-format": "{volume}%",
+		"max-volume": 200,
+		"on-click": "bash ~/.dotfiles/home/.config/dunstosd volume_mute",
+		"on-click-right": "pavucontrol",
+		"on-click-middle": "playerctl play-pause",
+		"on-scroll-down": "bash ~/.dotfiles/home/.config/dunstosd volume_down",
+		"on-scroll-up": "bash ~/.dotfiles/home/.config/dunstosd volume_up"
+	},
+
+	"bluetooth": {
+		"format": "󰂯",
+		"format-disabled": "󰂲",
+		"format-connected": "󰂯",
+		"tooltip-format": "{controller_alias}\t{controller_address}",
+		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+		"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+		"on-click": "blueman-manager"
+	}
 }

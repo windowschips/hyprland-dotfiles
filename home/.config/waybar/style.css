@@ -65,7 +65,7 @@
     border-radius: 0;
     min-height: 0;
     margin: 0;
-    padding: 1px;
+    padding: 0;
 }
 
 /* The whole bar */
@@ -73,24 +73,36 @@
     background: #303030;
     color: white;
     font-family: Cantarell, Ubuntu Nerd Font, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
+}
+tooltip {
+  background: rgba(0, 0, 6, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9px;
+  box-shadow: none;
+}
+tooltip label {
+  color: white;
+  font-size: 14px;
+    padding: 3px 5px;
+     transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
+    
+  text-shadow: none;
 }
 
 /* Each module */
 #battery,
 #clock,
 #cpu,
-#custom-keyboard-layout,
-#memory,
-#mode,
 #network,
+#iconsmenu,
 #pulseaudio,
 #bluetooth,
 #backlight,
 #temperature,
 #tray {
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 
@@ -140,7 +152,8 @@
 
 #clock {
     font-weight: bold;
-    font-size: 12px;
+    font-size: 14px;
+    padding-top: 6px;
 }
 
 #network.disconnected {
@@ -152,13 +165,12 @@
 }
 
 #workspaces button {
-    padding: 5px;
-    padding-left: 7px;
-    padding-right: 7px;
+    padding: 6px;
     color: #888888;
     border-radius: 100%;
     background-color: transparent;
-    font-size: 12px;
+    font-size: 14px;
+    transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
     font-weight: bold;
 }
 
